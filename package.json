@@ -1,0 +1,31 @@
+{
+  "name": "spritey-svg",
+  "version": "0.1.0",
+  "description": "Simple SVG sprite generator. No fallbacks, no css; just pure SVG goodness. This makes symbol like sprites out of svgs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jacob Lowe",
+  "license": "MIT",
+  "dependencies": {
+    "cliclopts": "^1.1.0",
+    "glob": "^5.0.5",
+    "minimist": "^1.1.1",
+    "stream-array": "^1.1.0",
+    "through2": "^0.6.5",
+    "vsvg": "^1.9.0",
+    "vsvg-parser": "^0.3.1"
+  },
+  "bin": {
+    "spritey": "bin/spritey"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jcblw/spritey-svg.git"
+  },
+  "homepage": "https://github.com/jcblw/spritey-svg",
+  "bugs": {
+    "url": "https://github.com/jcblw/spritey-svg/issues"
+  }
+}

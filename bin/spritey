@@ -1,0 +1,56 @@
+#!/usr/bin/env node
+
+/*
+	This is just the CLI wrapper
+*/
+
+var
+  opts = [
+    {
+      name: 'files',
+      abbr: 'f',
+      help: 'A glob of files to add to sprite.'
+    },
+    {
+      name: 'output',
+      abbr: 'o',
+      help: 'A path to output sprite to, will default to output data to the STDOUT.'
+    }
+  ],
+  cliclopts = require('cliclopts'),
+  glob = require('glob'),
+  path = require('path'),
+  options = cliclopts(opts),
+  args = require('minimist')(process.argv.slice(2), options.options()),
+  cwd = process.cwd() + '/',
+  spritey = require('..');
+
+args.output = args.output ? path.resolve(cwd + args.output) : process.stdout;
+
+if (args.h || args.help) {
+	process.stdout.write('Usage: sprity [options]\n\r');
+  options.print();
+	process.exit(0);
+}
+
+if (typeof args.files === 'string') {
+  return glob(args.files, function(err, files){
+    if (err) {
+      throw err;
+    }
+    args.files = files;
+    startSprity(args);
+  });
+}
+
+startSprity(args);
+
+function startSprity(options) {
+
+  if (!options.files || !options.files.length) {
+  	process.stderr.write('sprity needs a valid path to files to create sprite with from eg. sprity assets/**/*.svg');
+  	process.exit(1);
+  }
+
+  sprity(options);
+}
