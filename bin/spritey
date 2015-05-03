@@ -17,6 +17,7 @@ var
       help: 'A path to output sprite to, will default to output data to the STDOUT.'
     }
   ],
+  fs = require('fs'),
   cliclopts = require('cliclopts'),
   glob = require('glob'),
   path = require('path'),
@@ -25,7 +26,7 @@ var
   cwd = process.cwd() + '/',
   spritey = require('..');
 
-args.output = args.output ? path.resolve(cwd + args.output) : process.stdout;
+args.output = args.output ? fs.createWriteStream(path.resolve(cwd + args.output)) : process.stdout;
 
 if (args.h || args.help) {
 	process.stdout.write('Usage: sprity [options]\n\r');
@@ -52,5 +53,5 @@ function startSprity(options) {
   	process.exit(1);
   }
 
-  sprity(options);
+  spritey(options);
 }
