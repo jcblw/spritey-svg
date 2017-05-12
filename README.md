@@ -1,5 +1,7 @@
 # Spritey SVG
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/jcblw/spritey-svg.svg)](https://greenkeeper.io/)
+
 Simple SVG sprite generator. No fallbacks, no css; just pure SVG goodness. This makes `symbol` like sprites out of svgs.
 
 ## Usage
